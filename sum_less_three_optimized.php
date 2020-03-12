@@ -1,19 +1,14 @@
 <?php
-//echo 'Введите число: '
 
 $aNum = 9;
-$aStart = 0;
 
-if (!($aNum%3)){
-    $aStart = $aNum - 3;
-}
-else{
-    $aStart = $aNum-($aNum%3);
+$aStart = $aNum - 3;
+if ($aNum % 3) {
+    $aStart = $aNum - ($aNum % 3);
 }
 
 $sumThree = 0;
-
-for($i = $aStart;$i >= 3; $i -=3) {
+for ($i = $aStart; $i >= 3; $i -= 3) {
     $sumThree += $i;
 }
 

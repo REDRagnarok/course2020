@@ -1,22 +1,42 @@
 <?php
 
-$aDim = array(45,67,2 =>array(4, 6, 3 => array(-10, 19=>array(3,6,90,6),256, "first", 65), 8, 9),5 => array(54, "second", 95),7 => array(-7, "last", 176, 55),);
+$aDim = [
+    45,
+    67,
+    2 => [
+        4,
+        6,
+        3 => [
+            -10,
+            19 => [3, 6, 90, 6],
+            256,
+            "first",
+            65,
+        ],
+        8,
+        9,
+    ],
+    5 => [54, "second", 95,],
+    7 => [-7, "last", 176, 55,],
+];
 
-$linearDim = [];
-
-function get_one_dim_array ($arr, $outDim)
+/**
+ * @param array $arr
+ * @param array $outDim
+ * @return array
+ */
+function getOneDimArray(array $arr, array $outDim = []): array
 {
     foreach ($arr as $item) {
-
         if (is_array($item)) {
-            $outDim = get_one_dim_array($item,$outDim);
+            $outDim = getOneDimArray($item, $outDim);
             continue;
         }
-        elseif (is_numeric($item)){
+        if (is_numeric($item)) {
             $outDim[] = $item;
         }
-
     }
     return $outDim;
 }
-print_r(get_one_dim_array($aDim,$linearDim));
+
+print_r(getOneDimArray($aDim));
